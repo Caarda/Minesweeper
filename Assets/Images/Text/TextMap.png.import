@@ -1,0 +1,25 @@
+[remap]
+
+importer="font_data_image"
+type="FontFile"
+uid="uid://bg1fivubappho"
+path="res://.godot/imported/TextMap.png-c9527db8512ca9161ffca2111a64fa0a.fontdata"
+
+[deps]
+
+source_file="res://Assets/Images/Text/TextMap.png"
+dest_files=["res://.godot/imported/TextMap.png-c9527db8512ca9161ffca2111a64fa0a.fontdata"]
+
+[params]
+
+character_ranges=PackedStringArray("48-57")
+kerning_pairs=PackedStringArray()
+columns=10
+rows=1
+image_margin=Rect2i(0, 0, 0, 0)
+character_margin=Rect2i(0, 0, 0, 0)
+ascent=0
+descent=0
+fallbacks=[]
+compress=false
+scaling_mode=0

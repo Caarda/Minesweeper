@@ -1,0 +1,103 @@
+[gd_scene load_steps=11 format=3 uid="uid://cwcfqwboxyp0u"]
+
+[ext_resource type="Texture2D" uid="uid://1dd7g2vde5k0" path="res://Assets/Images/Backgrounds/BGScroll.png" id="1_kln2b"]
+[ext_resource type="Texture2D" uid="uid://bpyv8xyusgbgd" path="res://Assets/Images/Tiles/TileMap.png" id="1_pbw6q"]
+[ext_resource type="Script" uid="uid://betvjob2qx02n" path="res://Scripts/AudioManger.gd" id="1_r150o"]
+[ext_resource type="Texture2D" uid="uid://dt08bcoynyupe" path="res://Assets/Images/Backgrounds/StaticBackground.png" id="2_pbw6q"]
+[ext_resource type="Script" uid="uid://7y7wtnefgulg" path="res://Scripts/TileMap.gd" id="2_v1gob"]
+[ext_resource type="Texture2D" uid="uid://3inikfiydcsr" path="res://Assets/Images/Backgrounds/background.jpg" id="4_v1gob"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jw32o"]
+texture = ExtResource("1_pbw6q")
+texture_region_size = Vector2i(40, 40)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+3:1/0 = 0
+2:1/0 = 0
+1:1/0 = 0
+0:1/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+4:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+3:3/0 = 0
+2:3/0 = 0
+1:3/0 = 0
+0:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_v1gob"]
+tile_size = Vector2i(50, 50)
+sources/0 = SubResource("TileSetAtlasSource_jw32o")
+
+[sub_resource type="SystemFont" id="SystemFont_jw32o"]
+font_names = PackedStringArray("Nunito")
+
+[sub_resource type="Theme" id="Theme_50glp"]
+default_font = SubResource("SystemFont_jw32o")
+
+[node name="Main" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+z_index = 1
+position = Vector2(365, 141)
+tile_set = SubResource("TileSet_v1gob")
+script = ExtResource("2_v1gob")
+
+[node name="BackgroundParallax" type="Parallax2D" parent="."]
+visible = false
+repeat_size = Vector2(200, 200)
+autoscroll = Vector2(100, 50)
+repeat_times = 20
+
+[node name="BackgroundImage" type="Sprite2D" parent="BackgroundParallax"]
+visible = false
+texture_repeat = 2
+position = Vector2(1300, 650)
+texture = ExtResource("1_kln2b")
+centered = false
+
+[node name="Environment" type="Node" parent="."]
+
+[node name="Background" type="Sprite2D" parent="Environment"]
+position = Vector2(-13, -34)
+scale = Vector2(0.256692, 0.256692)
+texture = ExtResource("4_v1gob")
+centered = false
+
+[node name="HUD" type="Sprite2D" parent="Environment"]
+texture = ExtResource("2_pbw6q")
+centered = false
+
+[node name="RemainingTiles" type="RichTextLabel" parent="Environment/HUD"]
+offset_left = 514.0
+offset_top = 23.0
+offset_right = 767.0
+offset_bottom = 46.0
+theme = SubResource("Theme_50glp")
+text = "Tiles remaining:"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+text_direction = 1
+
+[node name="AudioManager" type="AudioStreamPlayer" parent="Environment"]
+script = ExtResource("1_r150o")
+
+[node name="OST_A" type="AudioStreamPlayer" parent="Environment/AudioManager"]
+
+[node name="OST_B" type="AudioStreamPlayer" parent="Environment/AudioManager"]
+
+[node name="SFX" type="AudioStreamPlayer" parent="Environment/AudioManager"]
